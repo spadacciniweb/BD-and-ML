@@ -1,0 +1,125 @@
+/*!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.11.8-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: BD_and_ML_0
+-- ------------------------------------------------------
+-- Server version	10.11.8-MariaDB-0ubuntu0.24.04.1-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `car`
+--
+
+DROP TABLE IF EXISTS `car`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `car` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `height` smallint(5) unsigned DEFAULT NULL,
+  `length` smallint(5) unsigned DEFAULT NULL,
+  `width` smallint(5) unsigned DEFAULT NULL,
+  `driveline_id` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `engine_type` varchar(255) DEFAULT NULL,
+  `hybrid` tinyint(1) NOT NULL DEFAULT 1,
+  `forward_gears` tinyint(3) unsigned NOT NULL,
+  `trasmission` varchar(255) DEFAULT NULL,
+  `fuel_type_id` tinyint(3) unsigned NOT NULL,
+  `fuel_city` varchar(10) DEFAULT NULL,
+  `fuel_highway` varchar(10) DEFAULT NULL,
+  `classification_id` tinyint(3) unsigned NOT NULL,
+  `identification_key` varchar(255) NOT NULL,
+  `make_id` tinyint(3) unsigned NOT NULL,
+  `model_year` varchar(50) NOT NULL,
+  `year` char(4) NOT NULL,
+  `horsepower` varchar(8) NOT NULL,
+  `torque` varchar(8) NOT NULL,
+  `creazione` datetime DEFAULT current_timestamp(),
+  `ts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `car_idfk_1` (`driveline_id`),
+  KEY `car_idfk_2` (`fuel_type_id`),
+  KEY `car_idfk_3` (`classification_id`),
+  KEY `car_idfk_4` (`make_id`),
+  CONSTRAINT `car_idfk_1` FOREIGN KEY (`driveline_id`) REFERENCES `driveline` (`id`),
+  CONSTRAINT `car_idfk_2` FOREIGN KEY (`fuel_type_id`) REFERENCES `fuel_type` (`id`),
+  CONSTRAINT `car_idfk_3` FOREIGN KEY (`classification_id`) REFERENCES `classification` (`id`),
+  CONSTRAINT `car_idfk_4` FOREIGN KEY (`make_id`) REFERENCES `make` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46022 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `classification`
+--
+
+DROP TABLE IF EXISTS `classification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `classification` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `driveline`
+--
+
+DROP TABLE IF EXISTS `driveline`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `driveline` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fuel_type`
+--
+
+DROP TABLE IF EXISTS `fuel_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fuel_type` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `make`
+--
+
+DROP TABLE IF EXISTS `make`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `make` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-01-11  2:22:04
