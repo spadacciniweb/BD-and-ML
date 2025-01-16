@@ -27,8 +27,8 @@ create table car (
     CONSTRAINT `car_idfk_1` FOREIGN KEY (`driveline_id`) REFERENCES `driveline` (`id`),
     CONSTRAINT `car_idfk_2` FOREIGN KEY (`fuel_type_id`) REFERENCES `fuel_type` (`id`),
     CONSTRAINT `car_idfk_3` FOREIGN KEY (`classification_id`) REFERENCES `classification` (`id`),
-    CONSTRAINT `car_idfk_4` FOREIGN KEY (`make_id`) REFERENCES `make` (`id`),
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    CONSTRAINT `car_idfk_4` FOREIGN KEY (`make_id`) REFERENCES `make` (`id`)
+);
 
 "Dimensions.Height","Dimensions.Length","Dimensions.Width","Engine Information.Driveline","Engine Information.Engine Type","Engine Information.Hybrid","Engine Information.Number of Forward Gears","Engine Information.Transmission","Fuel Information.City mpg","Fuel Information.Fuel Type","Fuel Information.Highway mpg","Identification.Classification","Identification.ID","Identification.Make","Identification.Model Year","Identification.Year","Engine Information.Engine Statistics.Horsepower","Engine Information.Engine Statistics.Torque"
 
