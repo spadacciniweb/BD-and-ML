@@ -1,6 +1,13 @@
 #!/usr/bin/env perl
 
 =head
+bank_account
+"username","euro","datetime"
+username String
+euro     2 decimal value
+datetime YYYY-MM-DDThh:mm:ss
+
+bank_movements
 "username","type","euro","datetime"
 username String
 type     String
