@@ -13,9 +13,15 @@ Nella directory `esercizio_0/` sono presenti:
 
 ## Esercizio 1
 
-Importare i csv `bank_accounts.csv` e bank_movements.csv prodotti dallo script `build_csv.pl`.\
+L'esercizio è composto dai seguenti step:
+
+1. creare i csv `bank_accounts.csv` e `bank_movements.csv` prodotti dallo script `build_csv.pl`.
+2. importare nel DB i csv prodotti.
+3. TODO
+
 Nella directory `esercizio_1/` sono presenti:
 
-- `DB/structure.sql` -> DDL - struttura DB (MariaDB);
-- `DB/control.sql` -> DCL - permessi utente;
-- `build_csv.pl` -> script Perl per la creazione dei csv da importare.
+- `build_csv.pl` -> script Perl per la creazione dei csv da importare (`step 1`).
+- `DB/structure.sql` -> DDL - struttura DB (MariaDB) (`step 2`);
+- `DB/control.sql` -> DCL - permessi utente (`step 2`);
+- `import.pl` -> script Perl per l'importazione dei csv su DB (`step 2`).
