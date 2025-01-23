@@ -80,15 +80,12 @@ my $dsn = sprintf("dbi:mysql:dbname=%s;host=%s;port=%s;",
 my $dbh = DBI->connect($dsn, $ENV{DB_USER}, $ENV{DB_PWD})
             or die "Connection error: $DBI::errstr";
 
-my $DELETE_ALL = 1;
-my $DEBUG = 1;
-
 my $file = $ARGV[0] or die "Need to get CSV file on the command line\n";
 
 deletePrev();
 
 my $foreignKeys = getTables();
-if ($DEBUG) {
+if ($ENV{DEBUG}) {
     my_log( sprintf "Dump foreign keys\n%s", Dumper($foreignKeys) )
 }
  
@@ -178,18 +175,18 @@ sub getKey {
     my_log( sprintf "insert key '%s' with id '%d' into table '%s'",
                 $key, $foreignKeys->{ $table }->{ $key }, $table
           )
-        if $DEBUG;
+        if $ENV{DEBUG};
     return $foreignKeys->{ $table }->{ $key };
 }
 
 sub deletePrev {
     my @tables = qw/ car /;
     push @tables, qw/ driveline fuel_type classification make /
-        if $DELETE_ALL;
+        if $ENV{DELETE};
     foreach my $table (@tables) {
         my $sql = sprintf "DELETE FROM %s", $table;
         $dbh->do( $sql );
         my_log( sprintf "DELETE TABLE %s", $table)
-            if $DEBUG;
+            if $ENV{DEBUG};
     }
 }

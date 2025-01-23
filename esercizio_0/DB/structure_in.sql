@@ -1,7 +1,29 @@
-CREATE DATABASE `BD_and_ML_0` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE BD_and_ML_0;
 
-use BD_and_ML_0;
-create table car (
+-- header
+-- "Dimensions.Height","Dimensions.Length","Dimensions.Width","Engine Information.Driveline","Engine Information.Engine Type","Engine Information.Hybrid","Engine Information.Number of Forward Gears","Engine Information.Transmission","Fuel Information.City mpg","Fuel Information.Fuel Type","Fuel Information.Highway mpg","Identification.Classification","Identification.ID","Identification.Make","Identification.Model Year","Identification.Year","Engine Information.Engine Statistics.Horsepower","Engine Information.Engine Statistics.Torque"
+
+CREATE TABLE driveline (
+    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+    `description` varchar(50) not null,
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE fuel_type (
+    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+    `description` varchar(50) not null,
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE classification (
+    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+    `description` varchar(50) not null,
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE make (
+    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+    `description` varchar(50) not null,
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE car (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `height` smallint unsigned DEFAULT NULL,
     `length` smallint unsigned DEFAULT NULL,
@@ -30,25 +52,3 @@ create table car (
     CONSTRAINT `car_idfk_4` FOREIGN KEY (`make_id`) REFERENCES `make` (`id`)
 );
 
-"Dimensions.Height","Dimensions.Length","Dimensions.Width","Engine Information.Driveline","Engine Information.Engine Type","Engine Information.Hybrid","Engine Information.Number of Forward Gears","Engine Information.Transmission","Fuel Information.City mpg","Fuel Information.Fuel Type","Fuel Information.Highway mpg","Identification.Classification","Identification.ID","Identification.Make","Identification.Model Year","Identification.Year","Engine Information.Engine Statistics.Horsepower","Engine Information.Engine Statistics.Torque"
-
-create table driveline (
-    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
-    `description` varchar(50) not null,
-  PRIMARY KEY (`id`)
-);
-create table fuel_type (
-    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
-    `description` varchar(50) not null,
-  PRIMARY KEY (`id`)
-);
-create table classification (
-    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
-    `description` varchar(50) not null,
-  PRIMARY KEY (`id`)
-);
-create table make (
-    `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
-    `description` varchar(50) not null,
-  PRIMARY KEY (`id`)
-);
