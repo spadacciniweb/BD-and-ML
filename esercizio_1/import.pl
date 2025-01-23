@@ -48,7 +48,7 @@ sub my_log {
 }
 
 sub deletePrev {
-    my @tables = qw/ bank_account bank_movement /;
+    my @tables = qw/ bank_movement bank_account /;
     foreach my $table (@tables) {
         my $sql = sprintf "DELETE FROM %s", $table;
         $dbh->do( $sql );
@@ -91,6 +91,9 @@ sub read_bank_accounts {
             # already in the DB so I don't do anything
         } else {
             $sth_insert->execute( $account{username}, $account{euro}, $account{euro} );
+            $sth_select->execute( $account{username} );
+            ($user_id) = $sth_select->fetchrow_array;
+            $user{ $account{username} } = $user_id;
         }
     }
     if (not $csv->eof) {
