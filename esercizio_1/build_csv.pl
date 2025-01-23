@@ -39,23 +39,6 @@ sub my_log {
     printf "[%s] %s\n", DateTime->now, $_ || '-> missing <-';
 }
 
-sub getKey {
-=head
-    my $table = shift;
-    my $key = shift;
-    return $foreignKeys->{ $table }->{ $key }
-        if $foreignKeys->{ $table }->{ $key };
-    $foreignKeys->{ $table }->{ $key } = (scalar keys %{ $foreignKeys->{ $table } }) + 1;
-    my $sth = $dbh->prepare( sprintf "INSERT INTO %s (id, description) VALUES (?, ?)", $table );
-    $sth->execute($foreignKeys->{ $table }->{ $key }, $key );
-    my_log( sprintf "insert key '%s' with id '%d' into table '%s'",
-                $key, $foreignKeys->{ $table }->{ $key }, $table
-          )
-        if $DEBUG;
-    return $foreignKeys->{ $table }->{ $key };
-=cut
-}
-
 sub build_accounts {
     my_log( sprintf "build file '%s'...", $ENV{BANK_ACCOUNTS})
         if $ENV{DEBUG};
