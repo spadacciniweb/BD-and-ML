@@ -16,7 +16,9 @@ Nella directory `esercizio_0/` sono presenti:
 L'esercizio è composto dai seguenti step:
 
 1. creare i csv `bank_accounts.csv` e `bank_movements.csv`;
-2. importare nel DB i csv prodotti;
+2. importare nel DB i csv prodotti in cui:
+    - la tabella `bank_account` avrà le due colonne `available_balance` e `accounting_balance` popolate in maniera equivalente al campo `euro` del csv;
+    - la tabella `bank_movement` avrà la colonna `euro` equialente al merge dei campi `type` e `euro` del csv, in particolare il segno del campo `euro` sarà in accordo alla tipologia del movimento (`+` e `-` rispettivamente per `ADD` e `SUB`).
 3. importare nel DB i csv prodotti movimentando per ogni record in `bank_movements.csv` la corrispondente disponibilità nella colonna `available_balance` nella tabella `bank_account`, e solo al termine del processamento dei movimenti aggiornare il campo `accounting_balance` (che dovrà corrispondere a `available_balance`);
 4. eseguire gli step 2. e 3. attraverso trigger su tabella equivalente a `bank_movement` denominata `bank_movement_trigger`;
 5. aggiungere 2 view:
