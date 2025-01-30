@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 =head
-bank_account
+bank_accounts
 "username","euro","datetime"
 username String
 euro     2 decimal value
@@ -38,7 +38,8 @@ deletePrev()
     if $ENV{DELETE};
 
 import_bank_accounts();
-import_movements();
+import_movements_with_triggers();
+update_accounts();
 
 exit 0;
 
@@ -48,7 +49,7 @@ sub my_log {
 }
 
 sub deletePrev {
-    my @tables = qw/ bank_movement bank_account /;
+    my @tables = qw/ bank_movement_trigger /;
     foreach my $table (@tables) {
         my $sql = sprintf "DELETE FROM %s", $table;
         $dbh->do( $sql );
@@ -102,7 +103,7 @@ sub import_bank_accounts {
     close $data;
 }
 
-sub import_movements {
+sub import_movements_with_triggers {
     my $csv = Text::CSV->new({
       binary    => 1,
       auto_diag => 1,
@@ -114,7 +115,7 @@ sub import_movements {
         or die "Could not open '$ENV{BANK_MOVEMENTS}' $!\n";
     $csv->getline( $data ); # skip header
 
-    my $sql_insert = 'INSERT INTO bank_movement (user_id, euro, dt_src) VALUES (?,?,?)';
+    my $sql_insert = 'INSERT INTO bank_movement_trigger (user_id, euro, dt_src) VALUES (?,?,?)';
     my $sth_insert = $dbh->prepare($sql_insert);
 
     while (my $fields = $csv->getline( $data )) {
@@ -135,4 +136,10 @@ sub import_movements {
       $csv->error_diag();
     }
     close $data;
+}
+
+sub update_accounts {
+    my_log( "Update accounts (available_balance -> accounting_balance)..." );
+    $dbh->do('UPDATE bank_account SET accounting_balance = available_balance');
+    my_log( "Updated accounts (available_balance -> accounting_balance)" );
 }
