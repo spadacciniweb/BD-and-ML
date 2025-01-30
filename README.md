@@ -32,4 +32,4 @@ Nella directory `esercizio_1/` sono presenti:
 - `process.pl` -> script Perl per il processamento dei movimenti sulla tabella `bank_movement` (`step 3`);
 - `DB/trigger.sql` -> DDL - aggiunta tabella `bank_movement_trigger` e relativo trigger (`step 4`);
 - `import_and_process.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement_trigger` (`step 4`);
-- `DB/view.sql` -> DDL - aggiunta viste e relativa utenza (`step 5`).
+- `DB/view.sql` -> DDL e DCL - aggiunta viste e relativa utenza (`step 5`).
