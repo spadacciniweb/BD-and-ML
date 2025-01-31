@@ -18,10 +18,12 @@ Nella directory `esercizio_0/` sono presenti:
 L'esercizio è composto dai seguenti step:
 
 1. Creare i csv `bank_accounts.csv` e `bank_movements.csv`.
-2. Importare nel DB i csv prodotti nelle tabelle `bank_account` e `bank_movement`.
+2. importare nel DB i csv prodotti in cui:
+    - la tabella `bank_account` avrà le due colonne `available_balance` e `accounting_balance` popolate in maniera equivalente al campo `euro` del csv;
+    - la tabella `bank_movement` avrà la colonna `euro` equivalente al merge dei campi `type` e `euro` del csv, in particolare il segno della colonna `euro` sarà in accordo alla tipologia del movimento (quindi `+` e `-` nella colonna `euro` sostituiranno rispettivamente `ADD` e `SUB` del campo `type`).
 3. Processare i movimenti nella tabella `bank_movement` e aggiornare la corrispondente disponibilità nella colonna `available_balance` della tabella `bank_account`, Solo al termine del processamento dei movimenti, aggiornare il campo `accounting_balance` (che dovrà corrispondere a `available_balance`).
 4. Eseguire gli step 2. e 3. attraverso trigger su tabella equivalente a `bank_movement` denominata `bank_movement_trigger`;
-5. Aggiungere 2 views.
+5. Aggiungere 2 view:
     - `bank_account_view` in cui non saranno visibili le colonne `id` e `creazione`;
     - `bank_movement_view` in cui saranno mostrare le colonne `username`, `euro` e `ts` ma limitato all'ultimo movimento processato per ciascuna `username`.
 6. Eseguire gli step 2. e 3. introducendo correttamente il processo di transazione.

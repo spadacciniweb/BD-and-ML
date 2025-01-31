@@ -13,4 +13,10 @@ Di seguito le tracce di massima per cui, prima di procedere, dovranno essere dis
 
 ## DBMS NoSQL
 
+- benchmark relazionale vs NoSQL;
+
+## DBMS NewSQL
+
+- benchmark relazionale vs NewSQL;
+
 `TODO`
