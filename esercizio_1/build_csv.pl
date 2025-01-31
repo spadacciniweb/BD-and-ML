@@ -25,7 +25,7 @@ use ENV::Util;
 
 ENV::Util::load_dotenv($ENV{HOME}.'/.env/bd_and_ml_25_esercizio_1');
 
-my $records = $ARGV[0] or die "Need to get number of records to save\n";
+my $records = $ENV{NRECORDS} or die "Need to get number of records to save\n";
 die "The number of records must be integer\n"
     if $records !~ /^\d+$/;
 
