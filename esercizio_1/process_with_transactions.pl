@@ -1,0 +1,90 @@
+#!/usr/bin/env perl
+
+=head
+bank_accounts
+"username","euro","datetime"
+username String
+euro     2 decimal value
+datetime YYYY-MM-DDThh:mm:ss
+
+bank_movements
+"username","type","euro","datetime"
+username String
+type     String
+euro     2 decimal value
+datetime YYYY-MM-DDThh:mm:ss.mil
+=cut
+
+use strict;
+use warnings;
+
+use Text::CSV;
+use Data::Dumper;
+use DateTime;
+use DBI;
+use ENV::Util;
+use Time::HiRes qw(usleep); 
+$| = 1;
+
+ENV::Util::load_dotenv($ENV{HOME}.'/.env/bd_and_ml_25_esercizio_1');
+
+my $dsn = sprintf("dbi:mysql:dbname=%s;host=%s;port=%s;",
+                    $ENV{DB_NAME}, $ENV{DB_HOST}, $ENV{DB_PORT}
+                 ) or die "Connection error: $DBI::errstr";
+my $dbh = DBI->connect($dsn, $ENV{DB_USER}, $ENV{DB_PWD})
+            or die "Connection error: $DBI::errstr";
+
+my $dt_start = DateTime->now;
+
+my %user = ();
+
+process_movements();
+update_accounts();
+
+my $dt_end = DateTime->now;
+my_log( sprintf "END in %s seconds", ($dt_end - $dt_start)->seconds )
+    if $ENV{DEBUG};
+exit 0;
+
+sub my_log {
+    $_ = shift;
+    printf "[%s] %s\n", DateTime->now, $_ || '-> missing <-';
+}
+
+sub process_movements {
+    my $sql_select = 'SELECT id, user_id, euro FROM bank_movement WHERE processed = 0';
+    my $sql_upd_account = 'UPDATE bank_account SET available_balance = available_balance + ? WHERE id = ?';
+    my $sql_upd_movement = 'UPDATE bank_movement SET processed = 1 WHERE id = ?';
+    my $sql_start_transaction = 'START TRANSACTION';
+    my $sql_commit = 'COMMIT';
+
+    my $sth_select = $dbh->prepare($sql_select);
+    my $sth_upd_account = $dbh->prepare($sql_upd_account);
+    my $sth_upd_movement = $dbh->prepare($sql_upd_movement);
+    my $sth_start_transaction = $dbh->prepare($sql_start_transaction);
+    my $sth_commit = $dbh->prepare($sql_commit);
+
+    my_log("process movements...");
+    my ($counts)  = $dbh->selectrow_array('SELECT count(*) AS cnt FROM bank_movement WHERE processed = 0');
+
+    my $line = 0;
+    my $rv = $sth_select->execute;
+    while (my $movement_ref = $sth_select->fetchrow_hashref) {
+        $line++;
+        printf "\r%.2f%%", $line*100/$counts
+            if $line % 10 == 0;
+        #warn Dumper( $movement_ref );
+        
+        $sth_start_transaction->execute;
+        $sth_upd_account->execute( $movement_ref->{euro}, $movement_ref->{user_id} );
+        usleep( $ENV{USLEEP} || 10_000 );
+        $sth_upd_movement->execute( $movement_ref->{id} );
+        $sth_commit->execute;
+    }
+}
+
+sub update_accounts {
+    my_log( "Update accounts (available_balance -> accounting_balance)..." );
+    $dbh->do('UPDATE bank_account SET accounting_balance = available_balance');
+    my_log( "Updated accounts (available_balance -> accounting_balance)" );
+}
