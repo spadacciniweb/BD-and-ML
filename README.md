@@ -40,10 +40,9 @@ Nella directory `esercizio_1/` sono presenti:
 - `DB/trigger.sql` -> DDL - aggiunta tabella `bank_movement_trigger` e relativo trigger (`step 4`);
 - `import_and_process_with_trigger.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement_trigger` (`step 4`);
 - `DB/view.sql` -> DDL e DCL - aggiunta viste e relativa utenza (`step 5`);
-- `process_with_transactions.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement` adottando i trigger (`step 6`).
+- `process_with_transactions.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement` adottando la tecnica transazionale (`step 6`).
 
 #### Note
 
-Per chiarezza esemplificativa è stato inserito lo script `process_slow.pl` quasi equivalente a `process.pl`.\
-Differentemente da quest'ultimo, al primo è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.\
-Il medesimo meccaniscmo di ritardo è stato introdotto nello script `process_with_transactions.pl`. 
+Per chiarezza sono stati inseriti gli script `process_slow.pl` e `process_with_transactions_slow.pl` quasi equivalenti rispettivamente a `process.pl` e `process_with_transactions.pl`.\
+Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.\

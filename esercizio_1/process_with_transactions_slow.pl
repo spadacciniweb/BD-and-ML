@@ -23,6 +23,7 @@ use Data::Dumper;
 use DateTime;
 use DBI;
 use ENV::Util;
+use Time::HiRes qw(usleep); 
 $| = 1;
 
 ENV::Util::load_dotenv($ENV{HOME}.'/.env/bd_and_ml_25_esercizio_1');
@@ -76,6 +77,7 @@ sub process_movements {
         
         $sth_start_transaction->execute;
         $sth_upd_account->execute( $movement_ref->{euro}, $movement_ref->{user_id} );
+        usleep( $ENV{USLEEP} || 10_000 );
         $sth_upd_movement->execute( $movement_ref->{id} );
         $sth_commit->execute;
     }
