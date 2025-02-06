@@ -1,7 +1,7 @@
 # Progetti proposti
 
-Entro la fine del corso ciascun studente dovrà presentare almeno un progetto tra i seguenti.\
-Di seguito le tracce di massima per cui, prima di procedere, dovranno essere discussi con il docente.  
+Di seguito sono proposte le tracce di massima dei progetti per cui, prima di procedere, ciascuna dovrà essere discussa con il docente.\
+Entro la fine del corso ogni studente dovrà presentare almeno un progetto.
 
 ## DBMS relazionali
 
@@ -13,7 +13,9 @@ Di seguito le tracce di massima per cui, prima di procedere, dovranno essere dis
 
 ## DBMS NoSQL
 
-- benchmark relazionale vs NoSQL;
+- benchmark relazionale vs Document-oriented database;
+- benchmark relazionale vs Key/value database;
+- benchmark SQLite vs DuckDB;
 
 ## DBMS NewSQL
 
