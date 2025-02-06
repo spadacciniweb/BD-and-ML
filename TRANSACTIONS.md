@@ -18,7 +18,7 @@ Ora si crei la transazione con `START TRANSACTION` (o equivalentemente `BEGIN`):
 |UPDATE bank_movement SET processed = 1 WHERE id = n;|
 |SELECT * from bank_movement WHERE id = n\G|SELECT * from bank_movement WHERE id = n\G|
 
-in cui sarà evidentemente la differenza.
+in cui sarà evidente la differenza.
 
 Successivamente per annullare la transazione non conclusa:
 |session 1|session 2|
