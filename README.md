@@ -48,6 +48,17 @@ Nella directory `esercizio_1/` sono presenti:
 Per chiarezza sono stati inseriti gli script `process_slow.pl` e `process_with_transactions_slow.pl` quasi equivalenti rispettivamente a `process.pl` e `process_with_transactions.pl`.\
 Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.\
 
+## Esercizio 1b
+
+Eseguire nuovamente gli `step 2` e `step 3` dell'`Esercizio 1` tramite il DBMSR SQLite.
+
+#### Nota
+
+Per questo esercizio non si dovrà cambiare nessuna logica di esecuzione, ma semplicemente:
+- modificare la `DDL` (semplici ritocchi);
+- nel secondo script modificare il driver e connettore al DBMS utilizzato.
+
+
 ## Esercizio 2
 
 Importare i file JSON in MongoDB con l'accortezza di ignorare gli orari in cui non sono riportati valori.
