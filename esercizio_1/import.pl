@@ -43,8 +43,8 @@ deletePrev()
 import_bank_accounts();
 import_movements();
         
-my $dt_end = DateTime->now;
-my_log( sprintf "END in %s seconds", ($dt_end - $dt_start)->seconds )
+my $delta_t = DateTime->now - $dt_start;
+my_log( sprintf "END in %d minutes %d seconds", $delta_t->minutes, $delta_t->seconds )
     if $ENV{DEBUG};
 exit 0;
 
