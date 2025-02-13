@@ -2,10 +2,11 @@
 
 ## Esercizio 0
 
-Importare csv normalizzando la stessa importazione.\
-Nella directory `esercizio_0/` sono presenti:
+Importare csv normalizzando la stessa importazione.
 
 #### Esecuzione
+
+Nella directory `esercizio_0/` sono presenti:
 
 - `url.txt` -> url del csv sorgente e spiegazione campi;
 - `cars.csv.gz` -> copia compressa del csv sorgente;
@@ -46,3 +47,11 @@ Nella directory `esercizio_1/` sono presenti:
 
 Per chiarezza sono stati inseriti gli script `process_slow.pl` e `process_with_transactions_slow.pl` quasi equivalenti rispettivamente a `process.pl` e `process_with_transactions.pl`.\
 Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.\
+
+## Esercizio 2
+
+Importare i file JSON in MongoDB con l'accortezza di ignorare gli orari in cui non sono riportati valori.
+
+Nella directory `esercizio_2/` sono presenti:
+
+- `16230.tgz` -> archivio compresso dei JSON da importare.
