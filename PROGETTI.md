@@ -13,6 +13,7 @@ Entro la fine del corso ogni studente dovrà presentare almeno un progetto.
 
 ## DBMS NoSQL
 
+- engine MongoDB
 - benchmark relazionale vs Document-oriented database;
 - benchmark relazionale vs Key/value database;
 - benchmark SQLite vs DuckDB;
