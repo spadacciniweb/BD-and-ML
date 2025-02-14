@@ -70,15 +70,15 @@ Nella directory `esercizio_2/` sono presenti vari script con l'indicazione degli
 
 - `LEGEND.md` -> legenda di un JSON;
 - `16230.tgz` -> archivio compresso dei JSON da importare;
-- `insert.pl` -> script Perl per l'importazione dei JSON utilizzando `insertOne` per ciascuno (`step 1`);
-- `insert_many.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` per ciascuno (`step 2`).
-- `insert_all.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` per la totalità (`step 3`).
-- `insert_parallel_retrieve_data.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 4`, inserimento dal `parent`).
-- `insert_parallel_reconnect.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 5`, inserimento dai `child`).
+- `insert.pl` -> script Perl per l'importazione dei JSON utilizzando `insertOne` (`step 1`, una importazione per ciascun documento JSON);
+- `insert_many.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` (`step 2`, una importazione per ciascun file);
+- `insert_all.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` (`step 3`, un'unica importazione per la totalità dei file);
+- `insert_parallel_retrieve_data.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 4`, inserimento come in `step 2` ma dal `parent`);
+- `insert_parallel_reconnect.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 5`, inserimento come in `step 2` ma dai singoli `child`).
 
 #### Note
 
 Per la programmazione parallale sono stati inseriti i due script `insert_parallel_retrieve_data.pl` e `insert_parallel_reconnect.pl`.\
 Il primo non è efficiente, peggiorando le performance rispetto gli step precedenti (sequenziali), aggiunto per mostrare uno dei possibili fail.\
-Il secondo è il più efficiente.
+Il secondo è il più efficiente tra tutti gli script.
 
