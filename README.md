@@ -33,7 +33,7 @@ L'esercizio è composto dai seguenti step:
 
 Nella directory `esercizio_1/` sono presenti:
 
-- `build_csv.pl` -> script Perl per la creazione dei csv da importare (`step 1`).
+- `build_csv.pl` -> script Perl per la creazione dei csv da importare (`step 1`);
 - `DB/structure.sql` -> DDL - struttura DB (MariaDB) (`step 2`);
 - `DB/control.sql` -> DCL - permessi utente (`step 2`);
 - `import.pl` -> script Perl per l'importazione dei csv su DB (`step 2`);
@@ -41,12 +41,13 @@ Nella directory `esercizio_1/` sono presenti:
 - `DB/trigger.sql` -> DDL - aggiunta tabella `bank_movement_trigger` e relativo trigger (`step 4`);
 - `import_and_process_with_trigger.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement_trigger` (`step 4`);
 - `DB/view.sql` -> DDL e DCL - aggiunta viste e relativa utenza (`step 5`);
-- `process_with_transactions.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement` adottando la tecnica transazionale (`step 6`).
+- `process_with_transactions.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement` adottando la tecnica transazionale (`step 6`);
+- `TRANSACTION.md` -> evoluzione esemplificativa di due sessioni parallele al DBMS durante l'attivazione di una transazione nella prima sessione. 
 
 #### Note
 
 Per chiarezza sono stati inseriti gli script `process_slow.pl` e `process_with_transactions_slow.pl` quasi equivalenti rispettivamente a `process.pl` e `process_with_transactions.pl`.\
-Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.\
+Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di processamento dei movimenti) un ritardo tra le due query per mostrare l'utilità/necessità del meccanismo della transazione.
 
 ## Esercizio 1b
 
@@ -61,8 +62,23 @@ Per questo esercizio non si dovrà cambiare nessuna logica di esecuzione, ma sem
 
 ## Esercizio 2
 
-Importare i file JSON in MongoDB con l'accortezza di ignorare gli orari in cui non sono riportati valori.
+Importare i file JSON in MongoDB con l'accortezza di ignorare le strutture JSON in cui non sono riportati valori significativi (quindi ignorare quei JSON in cui è riporato solo l'orario di produzione dello stesso, ma nessun altro attributo è valorizzato).
 
-Nella directory `esercizio_2/` sono presenti:
+#### Esecuzione
 
-- `16230.tgz` -> archivio compresso dei JSON da importare.
+Nella directory `esercizio_2/` sono presenti vari script con l'indicazione degli step incrementali:
+
+- `LEGEND.md` -> legenda di un JSON;
+- `16230.tgz` -> archivio compresso dei JSON da importare;
+- `insert.pl` -> script Perl per l'importazione dei JSON utilizzando `insertOne` per ciascuno (`step 1`);
+- `insert_many.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` per ciascuno (`step 2`).
+- `insert_all.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` per la totalità (`step 3`).
+- `insert_parallel_retrieve_data.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 4`, inserimento dal `parent`).
+- `insert_parallel_reconnect.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 5`, inserimento dai `child`).
+
+#### Note
+
+Per la programmazione parallale sono stati inseriti i due script `insert_parallel_retrieve_data.pl` e `insert_parallel_reconnect.pl`.\
+Il primo non è efficiente, peggiorando le performance rispetto gli step precedenti (sequenziali), aggiunto per mostrare uno dei possibili fail.\
+Il secondo è il più efficiente.
+
