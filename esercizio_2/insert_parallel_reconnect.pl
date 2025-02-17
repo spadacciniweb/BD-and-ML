@@ -10,7 +10,7 @@ use Data::Dumper;
 
 ENV::Util::load_dotenv($ENV{HOME}.'/.env/bd_and_ml_25_esercizio_2');
 
-my $dt_start = DateTime->now;
+my $dt_start = time();
 
 my $client = MongoDB::MongoClient->new;
 my $db = $client->get_database( 'bd_and_ml' );
@@ -22,15 +22,15 @@ deletePrev()
 my @filename = glob("$ENV{ES_2_DIR}/*.json");
 parallel_mongodb();
 
-my $delta_t = DateTime->now - $dt_start;
-my_log( sprintf "END in %d minutes %d seconds", $delta_t->minutes, $delta_t->seconds )
+my $delta_t = time() - $dt_start;
+my_log( sprintf "END in %d minutes %d seconds", $delta_t / 60, $delta_t % 60 )
     if $ENV{DEBUG};
 
 exit 0;
 
 sub my_log {
     $_ = shift;
-    printf "[%s] %s\n", DateTime->now, $_ || '-> missing <-';
+    printf "[%s] %s\n", DateTime->now->datetime(' '), $_ || '-> missing <-';
 }
 
 sub deletePrev {

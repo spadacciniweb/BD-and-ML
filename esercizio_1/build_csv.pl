@@ -29,6 +29,8 @@ my $records = $ENV{NRECORDS} or die "Need to get number of records to save\n";
 die "The number of records must be integer\n"
     if $records !~ /^\d+$/;
 
+my $dt_start = time();
+
 deletePrev()
     if $ENV{DELETE};
 
@@ -39,11 +41,15 @@ build_accounts()
     if $ENV{DELETE};
 build_movements();
 
+my $delta_t = time() - $dt_start;
+my_log( sprintf "END in %d minutes %d seconds", $delta_t / 60, $delta_t % 60 )
+    if $ENV{DEBUG};
+
 exit 0;
 
 sub my_log {
     $_ = shift;
-    printf "[%s] %s\n", DateTime->now, $_ || '-> missing <-';
+    printf "[%s] %s\n", DateTime->now->datetime(' '), $_ || '-> missing <-';
 }
 
 sub build_accounts {

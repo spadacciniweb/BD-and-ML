@@ -32,25 +32,24 @@ my $dsn = sprintf("dbi:mysql:dbname=%s;host=%s;port=%s;",
 my $dbh = DBI->connect($dsn, $ENV{DB_USER}, $ENV{DB_PWD})
             or die "Connection error: $DBI::errstr";
 
-my $dt_start = DateTime->now;
+my $dt_start = time();
 
 my %user = ();
 
 deletePrev()
     if $ENV{DELETE};
 
-
 import_bank_accounts();
 import_movements();
         
-my $delta_t = DateTime->now - $dt_start;
-my_log( sprintf "END in %d minutes %d seconds", $delta_t->minutes, $delta_t->seconds )
+my $delta_t = time() - $dt_start;
+my_log( sprintf "END in %d minutes %d seconds", $delta_t / 60, $delta_t % 60 )
     if $ENV{DEBUG};
 exit 0;
 
 sub my_log {
     $_ = shift;
-    printf "[%s] %s\n", DateTime->now, $_ || '-> missing <-';
+    printf "[%s] %s\n", DateTime->now->datetime(' '), $_ || '-> missing <-';
 }
 
 sub deletePrev {
