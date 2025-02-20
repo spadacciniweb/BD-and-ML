@@ -62,6 +62,8 @@ Per questo esercizio non si dovrà cambiare nessuna logica di esecuzione, ma sem
 
 ## Esercizio 2
 
+Prima dell'esercizio, consultare [Teoria e esercizi vari su MongoDB](https://github.com/spadacciniweb/argomenti-vari/blob/main/MongoDB/README.md)
+
 Importare i file JSON in MongoDB con l'accortezza di ignorare le strutture JSON in cui non sono riportati valori significativi (quindi ignorare quei JSON in cui è riporato solo l'orario di produzione dello stesso, ma nessun altro attributo è valorizzato).
 
 #### Esecuzione
