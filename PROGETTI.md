@@ -17,9 +17,8 @@ Entro la fine del corso ogni studente dovrà presentare almeno un progetto.
 - benchmark relazionale vs Document-oriented database;
 - benchmark relazionale vs Key/value database;
 - benchmark SQLite vs DuckDB;
+- CSV vs Parquet in DuckDB.
 
 ## DBMS NewSQL
 
-- benchmark relazionale vs NewSQL;
-
-`TODO`
+- benchmark relazionale vs NewSQL.
