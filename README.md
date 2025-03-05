@@ -62,7 +62,7 @@ Per questo esercizio non si dovrà cambiare nessuna logica di esecuzione, ma sem
 
 ## Esercizio 2
 
-Prima dell'esercizio, consultare [Teoria e esercizi vari su MongoDB](https://github.com/spadacciniweb/argomenti-vari/blob/main/MongoDB/README.md)
+Prima dell'esercizio, consultare [Teoria ed esempi su MongoDB](https://github.com/spadacciniweb/argomenti-vari/blob/main/MongoDB/README.md)
 
 Importare i file JSON in MongoDB con l'accortezza di ignorare le strutture JSON in cui non sono riportati valori significativi (quindi ignorare quei JSON in cui è riporato solo l'orario di produzione dello stesso, ma nessun altro attributo è valorizzato).
 
@@ -84,3 +84,8 @@ Per la programmazione parallale sono stati inseriti i due script `insert_paralle
 Il primo non è efficiente, peggiorando le performance rispetto gli step precedenti (sequenziali), aggiunto per mostrare uno dei possibili fail.\
 Il secondo è il più efficiente tra tutti gli script.
 
+## Esercizio 3
+
+Prima dell'esercizio, consultare [Teoria ed esempi su DuckDB](https://github.com/spadacciniweb/argomenti-vari/blob/main/DuckDB/README.md)
+
+Importare il file CSV in DuckDB.
