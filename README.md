@@ -4,7 +4,7 @@
 
 Importare csv normalizzando la stessa importazione.
 
-#### Esecuzione
+### Esecuzione
 
 Nella directory `esercizio_0/` sono presenti:
 
@@ -29,7 +29,7 @@ L'esercizio è composto dai seguenti step:
     - `bank_movement_view` in cui saranno mostrare le colonne `username`, `euro` e `ts` ma limitato all'ultimo movimento processato per ciascuna `username`.
 6. Eseguire gli step 2. e 3. introducendo correttamente il processo di transazione.
 
-#### Esecuzione
+### Esecuzione
 
 Nella directory `esercizio_1/` sono presenti:
 
@@ -42,7 +42,7 @@ Nella directory `esercizio_1/` sono presenti:
 - `import_and_process_with_trigger.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement_trigger` (`step 4`);
 - `DB/view.sql` -> DDL e DCL - aggiunta viste e relativa utenza (`step 5`);
 - `process_with_transactions.pl` -> script Perl per la creazione dei movimenti sulla tabella `bank_movement` adottando la tecnica transazionale (`step 6`);
-- `TRANSACTION.md` -> evoluzione esemplificativa di due sessioni parallele al DBMS durante l'attivazione di una transazione nella prima sessione. 
+- `TRANSACTION.md` -> evoluzione esemplificativa di due sessioni parallele al DBMS durante l'attivazione di una transazione nella prima sessione.
 
 #### Note
 
@@ -53,12 +53,12 @@ Differentemente da questi ultimi, ai primi è stato introdotto (nel ciclo di pro
 
 Eseguire nuovamente gli `step 2` e `step 3` dell'`Esercizio 1` tramite il DBMSR SQLite.
 
-#### Nota
+### Nota
 
 Per questo esercizio non si dovrà cambiare nessuna logica di esecuzione, ma semplicemente:
+
 - modificare la `DDL` (semplici ritocchi);
 - nel secondo script modificare il driver e connettore al DBMS utilizzato.
-
 
 ## Esercizio 2
 
@@ -66,7 +66,7 @@ Prima dell'esercizio, consultare [Teoria ed esempi su MongoDB](https://github.co
 
 Importare i file JSON in MongoDB con l'accortezza di ignorare le strutture JSON in cui non sono riportati valori significativi (quindi ignorare quei JSON in cui è riporato solo l'orario di produzione dello stesso, ma nessun altro attributo è valorizzato).
 
-#### Esecuzione
+### Esecuzione
 
 Nella directory `esercizio_2/` sono presenti vari script con l'indicazione degli step incrementali:
 
@@ -78,7 +78,7 @@ Nella directory `esercizio_2/` sono presenti vari script con l'indicazione degli
 - `insert_parallel_retrieve_data.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 4`, inserimento come in `step 2` ma dal `parent`);
 - `insert_parallel_reconnect.pl` -> script Perl per l'importazione dei JSON utilizzando `insertMany` via parallelizzazione (`step 5`, inserimento come in `step 2` ma dai singoli `child`).
 
-#### Note
+### Note
 
 Per la programmazione parallale sono stati inseriti i due script `insert_parallel_retrieve_data.pl` e `insert_parallel_reconnect.pl`.\
 Il primo non è efficiente, peggiorando le performance rispetto gli step precedenti (sequenziali), aggiunto per mostrare uno dei possibili fail.\
@@ -88,4 +88,7 @@ Il secondo è il più efficiente tra tutti gli script.
 
 Prima dell'esercizio, consultare [Teoria ed esempi su DuckDB](https://github.com/spadacciniweb/argomenti-vari/blob/main/DuckDB/README.md)
 
-Importare il file CSV in DuckDB.
+L'esercizio è composto dai seguenti step:
+
+1. Importare il file `video_games.csv.gz` in DuckDB attraverso la shell.
+2. Eseguire la medesima importazione del punto precedente tramite software.
