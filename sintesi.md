@@ -7,7 +7,7 @@ Di seguito i voti assegnati:
 | Andrea Fusella             | 26 ?
 | Argeo Prosperi             | 24
 | Claudiu Sopt               | 19 ?
-| Daniele Berghella          | 26
+| Daniele Berghella          | 27
 | Elisabetta Petraccia       | 26
 | Fabio Sarcinelli           | 18 ?
 | Francesca Ciavarella       | 20
